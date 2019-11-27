@@ -14,6 +14,22 @@ public class PlayerControl : MonoBehaviour
     public float tilt;
     public Boundary boundary;
 
+    public GameObject shot;
+    public Transform shotSpawn;//for create shot video 7
+    public float fireRate;
+    private float nextFire;
+
+    void Update()
+    {
+        if (Input.GetButton("Jump") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            //GameObject clone =
+            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);// as GameObject;
+            //GetComponent<AudioSource>().Play();
+        }
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
